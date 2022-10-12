@@ -2,9 +2,18 @@
 
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+import '../utils/rotes.dart';
+
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  String name = "";
+  bool tap = false;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -19,8 +28,8 @@ class LoginPage extends StatelessWidget {
               height: 50,
             ),
             Text(
-              "Welcome",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              "Welcome $name",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             Padding(
               padding:
@@ -32,6 +41,10 @@ class LoginPage extends StatelessWidget {
                       hintText: "enter username",
                       labelText: "Username",
                     ),
+                    onChanged: (value) {
+                      name = value;
+                      setState(() {});
+                    },
                   ),
                   TextFormField(
                     obscureText: true,
@@ -43,13 +56,37 @@ class LoginPage extends StatelessWidget {
                   SizedBox(
                     height: 50,
                   ),
-                  ElevatedButton(
-                    child: Text("login"),
-                    onPressed: () {
-                      print("hi akshay");
+                  InkWell(
+                    onTap: () async {
+                      setState(() {
+                        tap = true;
+                      });
+                      await Future.delayed(Duration(seconds: 1));
+                        Navigator.pushNamed(context, MyRoutes.homepage);
                     },
-                    style: TextButton.styleFrom(),
+                    child: AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      width: tap ? 50 : 150,
+                      height: 50,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: Colors.deepPurple,
+                          borderRadius: BorderRadius.circular(tap ? 50 : 9)),
+                      child: tap?Icon(Icons.done,color: Colors.white,):Text(
+                        "Login",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    ),
                   )
+                  // ElevatedButton(
+                  //   child: Text("Login", style: TextStyle(fontSize: 20)),
+                  //   onPressed: () {
+                  //     Navigator.pushNamed(context, MyRoutes.homepage);
+                  //   },
+                  //   style: TextButton.styleFrom(
+                  //       minimumSize: Size(100, 35),
+                  //       foregroundColor: Colors.black),
+                  // )
                 ],
               ),
             ),
