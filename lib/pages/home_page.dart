@@ -10,17 +10,11 @@ class HomePage extends StatelessWidget {
     int day = 30;
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Tinder For Sports",
-          style: TextStyle(fontSize: 22),
-        ),
+        title: Text("Tinder For Sports"),
       ),
-      body: Container(
-        color: Colors.white,
-        child: Center(
-          child: Container(
-            child: Text("welcome to a $day"),
-          ),
+      body: Center(
+        child: Container(
+          child: Text("welcome to a $day"),
         ),
       ),
       drawer: MyDrawer(),
