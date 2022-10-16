@@ -23,29 +23,30 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
+    await Future.delayed(Duration(seconds: 2));
     var catalogjason = await rootBundle.loadString("assets/files/Catalog.json");
     var decodedata = jsonDecode(catalogjason);
     var productsdata = decodedata["products"];
-    print(productsdata);
+    CatalogModel.items = List.from(productsdata)
+        .map<Item>((item) => Item.fromMap(item))
+        .toList();
+
+    setState(() {});
   }
 
   Widget build(BuildContext context) {
-    final dummylist = List.generate(20, (index) => CatalogModel.items[0]);
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Tinder For Sports"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: dummylist.length,
-          itemBuilder: (context, index) {
-            return ItemWidget(
-              item: dummylist[index],
-            );
-          },
-        ),
+        child: (CatalogModel.items!=null && CatalogModel.items.isNotEmpty)?ListView.builder(
+          itemCount: CatalogModel.items.length,
+          itemBuilder: (context, index) => ItemWidget(
+            item: CatalogModel.items[index],
+          ),
+        ):Center(child: CircularProgressIndicator(),),
       ),
       drawer: MyDrawer(),
     );

@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
       setState (() {
         tap = true;
       });
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(Duration(seconds: 1));
       Navigator.pushNamed(context, MyRoutes.homepage);
       setState(() {
         tap = false;
@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: InkWell(
                         onTap: () => moveToHome(context),
                         child: AnimatedContainer(
-                          duration: Duration(seconds: 2),
+                          duration: Duration(seconds: 1),
                           width: tap ? 50 : 150,
                           height: 50,
                           alignment: Alignment.center,
