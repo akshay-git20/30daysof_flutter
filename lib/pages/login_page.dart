@@ -17,12 +17,12 @@ class _LoginPageState extends State<LoginPage> {
 
   final _formkey = GlobalKey<FormState>();
 
-  moveToHome(BuildContext context) {
+  moveToHome(BuildContext context) async {
     if (_formkey.currentState!.validate()) {
-      setState(() {
+      setState (() {
         tap = true;
       });
-      Future.delayed(Duration(seconds: 1));
+      await Future.delayed(Duration(seconds: 2));
       Navigator.pushNamed(context, MyRoutes.homepage);
       setState(() {
         tap = false;
@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: InkWell(
                         onTap: () => moveToHome(context),
                         child: AnimatedContainer(
-                          duration: Duration(seconds: 1),
+                          duration: Duration(seconds: 2),
                           width: tap ? 50 : 150,
                           height: 50,
                           alignment: Alignment.center,
