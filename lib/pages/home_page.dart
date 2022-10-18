@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
@@ -37,16 +39,42 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tinder For Sports"),
+        title: Text("Catalog App"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: (CatalogModel.items!=null && CatalogModel.items.isNotEmpty)?ListView.builder(
-          itemCount: CatalogModel.items.length,
-          itemBuilder: (context, index) => ItemWidget(
-            item: CatalogModel.items[index],
-          ),
-        ):Center(child: CircularProgressIndicator(),),
+        child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+            ? GridView.builder(
+                itemCount: CatalogModel.items.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisSpacing: 16.0,
+                    crossAxisSpacing: 16.0,
+                    crossAxisCount: 2),
+                itemBuilder: ((context, index) {
+                  final item = CatalogModel.items[index];
+                  return Card(
+                      child: GridTile(
+                    header: Container(
+                        decoration: BoxDecoration(color: Colors.deepPurple),
+                        child: Text(
+                          item.name,
+                          style: TextStyle(color: Colors.white),
+                        )),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Image.network(item.image),
+                    ),
+                    footer: Container(
+                        decoration: BoxDecoration(color: Colors.deepPurple),
+                        child: Text(
+                          item.price.toString(),
+                          style: TextStyle(color: Colors.white),
+                        )),
+                  ));
+                }))
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
       ),
       drawer: MyDrawer(),
     );
