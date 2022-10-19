@@ -13,6 +13,8 @@ class Homedetailpage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          shadowColor: Mythemes.creamcolor,
+          elevation: 0.0,
           backgroundColor: Mythemes.creamcolor,
         ),
         bottomNavigationBar: Container(
@@ -37,7 +39,11 @@ class Homedetailpage extends StatelessWidget {
         body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           Hero(
                   tag: Key(item.id.toString()),
-                  child: Image.network(item.image).box.alignTopCenter.make())
+                  child: Image.network(item.image)
+                      .box
+                      .alignTopCenter
+                      .make()
+                      .color(Mythemes.creamcolor))
               .h32(context),
           Expanded(
               child: VxArc(
@@ -53,10 +59,20 @@ class Homedetailpage extends StatelessWidget {
                             .color(Mythemes.darkBluishColor)
                             .xl3
                             .make(),
-                        item.desc.text.textStyle(context.captionStyle).make(),
+                        item.desc.text
+                            .textStyle(context.captionStyle)
+                            .xl
+                            .make(),
+                        "Eos sit ut eirmod diam et at amet sadipscing diam. Et voluptua gubergren dolores diam. Dolor ut vero labore justo. Takimata dolores at dolor sed. Takimata erat voluptua clita elitr lorem, amet tempor et kasd at sit sed, consetetur magna consetetur ipsum diam invidunt, justo dolore dolor justo rebum labore."
+                            .text
+                            .textStyle(context.captionStyle)
+                            .size(13)
+                            .make()
+                            .pOnly(left: 8)
+                            .p24()
                       ],
                     ).py64(),
-                  )))
+                  )).color(Mythemes.creamcolor))
         ]),
       ).color(Mythemes.creamcolor),
     );

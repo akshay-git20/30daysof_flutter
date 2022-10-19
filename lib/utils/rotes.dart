@@ -2,4 +2,5 @@ class MyRoutes {
   static String homepage = "/home";
   static String loginpage = "/login";
   static String homedeatilspage = "/detailpage";
+  static String cartpage = "/cartpage";
 }
