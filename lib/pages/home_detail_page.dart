@@ -15,10 +15,10 @@ class Homedetailpage extends StatelessWidget {
         appBar: AppBar(
           shadowColor: Mythemes.creamcolor,
           elevation: 0.0,
-          backgroundColor: Mythemes.creamcolor,
+          backgroundColor: Colors.transparent,
         ),
         bottomNavigationBar: Container(
-          color: Colors.white,
+          color: context.cardColor,
           child: ButtonBar(
             buttonPadding: EdgeInsets.zero,
             alignment: MainAxisAlignment.spaceBetween,
@@ -28,9 +28,9 @@ class Homedetailpage extends StatelessWidget {
                       style: ButtonStyle(
                           shape: MaterialStateProperty.all(StadiumBorder()),
                           backgroundColor: MaterialStateProperty.all(
-                              Mythemes.darkBluishColor)),
+                              context.theme.buttonColor)),
                       onPressed: (() {}),
-                      child: "Buy".text.bold.xl.make())
+                      child: "Buy".text.color(context.cardColor).bold.xl.make())
                   .wh(80, 40)
                   .pOnly(right: 16)
             ],
@@ -43,7 +43,7 @@ class Homedetailpage extends StatelessWidget {
                       .box
                       .alignTopCenter
                       .make()
-                      .color(Mythemes.creamcolor))
+                      .color(context.canvasColor))
               .h32(context),
           Expanded(
               child: VxArc(
@@ -52,11 +52,11 @@ class Homedetailpage extends StatelessWidget {
                   height: 30,
                   child: Container(
                     width: context.screenWidth,
-                    color: Colors.white,
+                    color: context.cardColor,
                     child: Column(
                       children: [
                         item.name.text.bold
-                            .color(Mythemes.darkBluishColor)
+                            .color(context.theme.secondaryHeaderColor)
                             .xl3
                             .make(),
                         item.desc.text
@@ -72,9 +72,9 @@ class Homedetailpage extends StatelessWidget {
                             .p24()
                       ],
                     ).py64(),
-                  )).color(Mythemes.creamcolor))
+                  )).color(context.canvasColor))
         ]),
-      ).color(Mythemes.creamcolor),
+      ).color(context.canvasColor),
     );
   }
 }

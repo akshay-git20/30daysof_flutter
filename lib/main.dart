@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     int day = 30;
     return MaterialApp(
       // home: homepage(),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       theme: Mythemes.lightTheme,
       darkTheme: Mythemes.darkTheme,
       debugShowCheckedModeBanner: false,
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         "/": (context) => LoginPage(),
         MyRoutes.homepage: (context) => HomePage(),
         MyRoutes.loginpage: (context) => LoginPage(),
-        MyRoutes.cartpage:(context) => Cartpage()
+        MyRoutes.cartpage: (context) => Cartpage()
       },
     );
   }

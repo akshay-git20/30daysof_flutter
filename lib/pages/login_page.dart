@@ -1,6 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import '../utils/rotes.dart';
 
@@ -19,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
 
   moveToHome(BuildContext context) async {
     if (_formkey.currentState!.validate()) {
-      setState (() {
+      setState(() {
         tap = true;
       });
       await Future.delayed(Duration(seconds: 1));
@@ -33,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.white,
+        color: context.canvasColor,
         child: Form(
           key: _formkey,
           child: Column(
@@ -45,10 +49,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 50,
               ),
-              Text(
-                "Welcome $name",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
+              "Welcome $name".text.xl4.center.make().p16(),
               Padding(
                 padding: const EdgeInsets.symmetric(
                     vertical: 16.0, horizontal: 32.0),
@@ -91,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                       height: 50,
                     ),
                     Material(
-                      color: Colors.deepPurple,
+                      color: context.theme.buttonColor,
                       borderRadius: BorderRadius.circular(tap ? 50 : 9),
                       child: InkWell(
                         onTap: () => moveToHome(context),
@@ -105,11 +106,11 @@ class _LoginPageState extends State<LoginPage> {
                                   Icons.done,
                                   color: Colors.white,
                                 )
-                              : Text(
-                                  "Login",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
-                                ),
+                              : "Login"
+                                  .text
+                                  .color(context.cardColor)
+                                  .xl2
+                                  .make(),
                         ),
                       ),
                     )
