@@ -9,7 +9,7 @@ class Mythemes {
       canvasColor: creamcolor,
       buttonColor: darkBluishColor,
       appBarTheme: AppBarTheme(
-        backgroundColor: creamcolor,
+          backgroundColor: creamcolor,
           elevation: 0.0,
           titleTextStyle: TextStyle(color: Colors.black, fontSize: 22),
           iconTheme: IconThemeData(color: Colors.black)),
@@ -22,6 +22,7 @@ class Mythemes {
   static Color lightBluishColor = Color.fromARGB(255, 73, 75, 232);
 
   static ThemeData get darkTheme => ThemeData(
+        brightness: Brightness.dark,
         secondaryHeaderColor: Colors.white,
         cardColor: Vx.black,
         canvasColor: darkcreamcolr,

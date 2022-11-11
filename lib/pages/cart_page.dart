@@ -48,7 +48,9 @@ class _Carttotal extends StatelessWidget {
               style: ButtonStyle(
                   backgroundColor:
                       MaterialStatePropertyAll(context.theme.buttonColor)),
-              onPressed: (() => {}),
+              onPressed: (() => ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                      content: "Buyying is not supported yet".text.make()))),
               child: "Buy".text.color(Colors.white).make())
         ],
       ),
