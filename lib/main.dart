@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/store.dart';
 import 'package:flutter_application_1/pages/cart_page.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
 import 'package:flutter_application_1/pages/login_page.dart';
 import 'package:flutter_application_1/utils/rotes.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 void main(List<String> args) {
-  runApp(MyApp());
+  runApp(VxState(store: Mystore(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +16,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int day = 30;
     return MaterialApp(
       // home: homepage(),
       themeMode: ThemeMode.system,

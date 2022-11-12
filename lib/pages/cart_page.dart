@@ -1,13 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_application_1/models/cart.dart';
-import 'package:flutter_application_1/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import '../models/catelog.dart';
-
 class Cartpage extends StatelessWidget {
   const Cartpage({super.key});
 
@@ -64,14 +57,7 @@ class _Carttotal extends StatelessWidget {
   }
 }
 
-class _Cartlist extends StatefulWidget {
-  const _Cartlist({super.key});
-
-  @override
-  State<_Cartlist> createState() => _CartlistState();
-}
-
-class _CartlistState extends State<_Cartlist> {
+class _Cartlist extends StatelessWidget {
   final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
@@ -84,7 +70,7 @@ class _CartlistState extends State<_Cartlist> {
                   trailing: IconButton(
                       onPressed: (() {
                         _cart.remove(_cart.items[index]);
-                        setState(() {});
+                        // setState(() {});
                       }),
                       icon: Icon(Icons.remove)),
                   title: _cart.items[index].name.text.make(),

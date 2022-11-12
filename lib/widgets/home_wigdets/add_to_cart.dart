@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -5,22 +7,16 @@ import 'package:velocity_x/velocity_x.dart';
 import '../../models/cart.dart';
 import '../../models/catelog.dart';
 
-class Addtocart extends StatefulWidget {
+class Addtocart extends StatelessWidget {
   final Item catalog;
-  const Addtocart({
+  Addtocart({
     Key? key,
     required this.catalog,
   }) : super(key: key);
-
-  @override
-  State<Addtocart> createState() => _AddtocartState();
-}
-
-class _AddtocartState extends State<Addtocart> {
   final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
-    bool isincart = _cart.items.contains(widget.catalog);
+    bool isincart = _cart.items.contains(catalog);
     return ElevatedButton(
         style: ButtonStyle(
             shape: MaterialStateProperty.all(StadiumBorder()),
@@ -31,10 +27,10 @@ class _AddtocartState extends State<Addtocart> {
             isincart = isincart.toggle();
             final _catalog = CatalogModel();
             _cart.catalog = _catalog;
-            _cart.add(widget
-                .catalog); //yahpe wodget isliye dala hai ki woh harr barrr update karate rahe ye koi lockl variable
+            _cart.add(
+                catalog); //yahpe wodget isliye dala hai ki woh harr barrr update karate rahe ye koi lockl variable
             //nahi hai isliye wahape widget jaruri hai
-            setState(() {});
+            // setState(() {});
           }
         }),
         child: isincart
