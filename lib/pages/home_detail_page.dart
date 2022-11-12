@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -30,8 +32,13 @@ class Homedetailpage extends StatelessWidget {
                           backgroundColor: MaterialStateProperty.all(
                               context.theme.buttonColor)),
                       onPressed: (() {}),
-                      child: "Buy".text.color(context.cardColor).bold.xl.make())
-                  .wh(80, 40)
+                      child: "Add to cart"
+                          .text
+                          .color(context.cardColor)
+                          .bold
+                          .xl
+                          .make())
+                  .wh(140, 40)
                   .pOnly(right: 16)
             ],
           ).py16(),

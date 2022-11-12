@@ -1,4 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/cart.dart';
 import 'package:flutter_application_1/pages/home_detail_page.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -38,26 +40,24 @@ class CatalogItem extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) => Homedetailpage(item: item)));
             }),
-            child: Hero(tag: Key(item.id.toString()),child: CatalogImage(image: item.image))),
+            child: Hero(
+                tag: Key(item.id.toString()),
+                child: CatalogImage(image: item.image))),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              item.name.text.bold.color(context.theme.secondaryHeaderColor).make(),
+              item.name.text.bold
+                  .color(context.theme.secondaryHeaderColor)
+                  .make(),
               item.desc.text.textStyle(context.captionStyle).make(),
               ButtonBar(
                 buttonPadding: EdgeInsets.zero,
                 alignment: MainAxisAlignment.spaceBetween,
                 children: [
                   "\$${item.price}".text.bold.xl.make(),
-                  ElevatedButton(
-                      style: ButtonStyle(
-                          shape: MaterialStateProperty.all(StadiumBorder()),
-                          backgroundColor: MaterialStateProperty.all(
-                              context.theme.buttonColor)),
-                      onPressed: (() {}),
-                      child: "Buy".text.color(context.cardColor).bold.make())
+                  Addtocart(catalog: item)
                 ],
               ).pOnly(right: 8)
             ],
@@ -65,5 +65,41 @@ class CatalogItem extends StatelessWidget {
         )
       ],
     )).color(context.cardColor).rounded.square(140).make().py16();
+  }
+}
+
+class Addtocart extends StatefulWidget {
+  final Item catalog;
+  const Addtocart({
+    Key? key,
+    required this.catalog,
+  }) : super(key: key);
+
+  @override
+  State<Addtocart> createState() => _AddtocartState();
+}
+
+class _AddtocartState extends State<Addtocart> {
+  @override
+  bool isadded = false;
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+        style: ButtonStyle(
+            shape: MaterialStateProperty.all(StadiumBorder()),
+            backgroundColor:
+                MaterialStateProperty.all(context.theme.buttonColor)),
+        onPressed: (() {
+          isadded = isadded.toggle();
+          final _catalog = CatalogModel();
+          final _cart = CartModel();
+          _cart.catalog = _catalog;
+          _cart.add(widget
+              .catalog); //yahpe wodget isliye dala hai ki woh harr barrr update karate rahe ye koi lockl variable
+          //nahi hai isliye wahape widget jaruri hai
+          setState(() {});
+        }),
+        child: isadded
+            ? Icon(Icons.done)
+            : "to cart".text.color(context.cardColor).bold.make());
   }
 }

@@ -2,6 +2,11 @@
 import 'dart:convert';
 
 class CatalogModel {
+  static final cart = CatalogModel._internal();
+  
+  CatalogModel._internal();
+
+  factory CatalogModel() => cart;
   static List<Item> items = [];
 
   Item getbyid(int id) => items.firstWhere((element) => element.id == id,

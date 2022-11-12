@@ -1,6 +1,12 @@
 import 'package:flutter_application_1/models/catelog.dart';
 
-class Cartlist {
+class CartModel {
+  static final cart = CartModel._internal();
+  
+  CartModel._internal();
+
+  factory CartModel() => cart;
+
   // ignore: non_constant_identifier_names
   late CatalogModel _Catlog;
 
