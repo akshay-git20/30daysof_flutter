@@ -1,7 +1,6 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/store.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../models/cart.dart';
@@ -13,9 +12,10 @@ class Addtocart extends StatelessWidget {
     Key? key,
     required this.catalog,
   }) : super(key: key);
-  final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
+    VxState.watch(context, on: [Addmutation]);
+    final CartModel _cart = (VxState.store as Mystore).cart;
     bool isincart = _cart.items.contains(catalog);
     return ElevatedButton(
         style: ButtonStyle(
@@ -24,13 +24,7 @@ class Addtocart extends StatelessWidget {
                 MaterialStateProperty.all(context.theme.buttonColor)),
         onPressed: (() {
           if (!isincart) {
-            isincart = isincart.toggle();
-            final _catalog = CatalogModel();
-            _cart.catalog = _catalog;
-            _cart.add(
-                catalog); //yahpe wodget isliye dala hai ki woh harr barrr update karate rahe ye koi lockl variable
-            //nahi hai isliye wahape widget jaruri hai
-            // setState(() {});
+            Addmutation(item: catalog);
           }
         }),
         child: isincart

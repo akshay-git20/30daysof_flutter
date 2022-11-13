@@ -1,10 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/home_wigdets/Add_to_cart.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../models/catelog.dart';
 
 class Homedetailpage extends StatelessWidget {

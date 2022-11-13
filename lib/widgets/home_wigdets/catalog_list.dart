@@ -1,13 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/cart.dart';
+
 import 'package:flutter_application_1/pages/home_detail_page.dart';
 import 'package:flutter_application_1/widgets/home_wigdets/Add_to_cart.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../models/catelog.dart';
-import '../../utils/rotes.dart';
-import '../themes.dart';
 import 'catalog_image.dart';
 
 class CatalogList extends StatelessWidget {

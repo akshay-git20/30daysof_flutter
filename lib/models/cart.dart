@@ -1,12 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter_application_1/core/store.dart';
 import 'package:flutter_application_1/models/catelog.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class CartModel {
-  static final cart = CartModel._internal();
-  
-  CartModel._internal();
-
-  factory CartModel() => cart;
-
   // ignore: non_constant_identifier_names
   late CatalogModel _Catlog;
 
@@ -19,10 +16,6 @@ class CartModel {
 
   final List<int> _itemids = [];
 
-  void add(Item item) {
-    _itemids.add(item.id);
-  }
-
   void remove(Item item) {
     _itemids.remove(item.id);
   }
@@ -31,4 +24,15 @@ class CartModel {
 
   num get totalprice =>
       items.fold(0, (total, current) => total + current.price);
+}
+
+class Addmutation extends VxMutation<Mystore> {
+  Item item;
+  Addmutation({
+    required this.item,
+  });
+  @override
+  perform() {
+    store?.cart._itemids.add(item.id);
+  }
 }

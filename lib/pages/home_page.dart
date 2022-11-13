@@ -6,9 +6,6 @@ import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:flutter_application_1/models/catelog.dart';
 import 'package:flutter_application_1/utils/rotes.dart';
-import 'package:flutter_application_1/widgets/Item_Widegt.dart';
-import 'package:flutter_application_1/widgets/themes.dart';
-import '../widgets/drawer.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../widgets/home_wigdets/catalog_header.dart';
