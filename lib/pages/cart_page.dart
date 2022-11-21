@@ -40,14 +40,15 @@ class _Carttotal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          VxBuilder(builder: ((context, store, status) {
-            return "\$${_cart.totalprice}"
-              .text
-              .color(context.theme.secondaryHeaderColor)
-              .xl4
-              .make();
-            
-          }), mutations: {Removemutation}),
+          VxBuilder(
+              builder: ((context, store, status) {
+                return "\$${_cart.totalprice}"
+                    .text
+                    .color(context.theme.secondaryHeaderColor)
+                    .xl4
+                    .make();
+              }),
+              mutations: {Removemutation}),
           ElevatedButton(
               style: ButtonStyle(
                   backgroundColor:
@@ -76,7 +77,7 @@ class _Cartlist extends StatelessWidget {
                   trailing: IconButton(
                       onPressed: () => Removemutation(item: _cart.items[index]),
                       icon: Icon(Icons.remove)),
-                  title: _cart.items[index].name.text.make(),
+                  title: _cart.items[index].title.text.make(),
                 )));
   }
 }

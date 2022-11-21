@@ -41,32 +41,30 @@ class Homedetailpage extends StatelessWidget {
               .h32(context),
           Expanded(
               child: VxArc(
-                  edge: VxEdge.TOP,
-                  arcType: VxArcType.CONVEY,
-                  height: 30,
-                  child: Container(
-                    width: context.screenWidth,
-                    color: context.cardColor,
-                    child: Column(
-                      children: [
-                        item.name.text.bold
-                            .color(context.theme.secondaryHeaderColor)
-                            .xl3
-                            .make(),
-                        item.desc.text
-                            .textStyle(context.captionStyle)
-                            .xl
-                            .make(),
-                        "Eos sit ut eirmod diam et at amet sadipscing diam. Et voluptua gubergren dolores diam. Dolor ut vero labore justo. Takimata dolores at dolor sed. Takimata erat voluptua clita elitr lorem, amet tempor et kasd at sit sed, consetetur magna consetetur ipsum diam invidunt, justo dolore dolor justo rebum labore."
-                            .text
-                            .textStyle(context.captionStyle)
-                            .size(13)
-                            .make()
-                            .pOnly(left: 8)
-                            .p24()
-                      ],
-                    ).py64(),
-                  )).color(context.canvasColor))
+                      edge: VxEdge.TOP,
+                      arcType: VxArcType.CONVEY,
+                      height: 30,
+                      child: Container(
+                          width: context.screenWidth,
+                          color: context.cardColor,
+                          child: Column(
+                            children: [
+                              item.title.text.bold
+                                  .color(context.theme.secondaryHeaderColor)
+                                  .xl2
+                                  .make()
+                                  .pOnly(left: 16),
+                              SingleChildScrollView(
+                                scrollDirection: Axis.vertical,
+                                child: item.description.text
+                                    .textStyle(context.captionStyle)
+                                    .xl
+                                    .make()
+                                    .pOnly(left: 16),
+                              ).expand()
+                            ],
+                          ).pOnly(top: 64)))
+                  .color(context.canvasColor)),
         ]),
       ).color(context.canvasColor),
     );
